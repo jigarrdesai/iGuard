@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/efefef" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_10dp">
+
+        <ImageView
+            android:id="@+id/rowvideotraining_imgThumb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:src="@drawable/video_icon" />
+
+        <TextView
+            android:id="@+id/rowvideotraining_txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_toRightOf="@+id/rowvideotraining_imgThumb"
+            android:layout_toLeftOf="@+id/rowvideotraining_imgDownload"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textSize="@dimen/font_15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rowvideotraining_txtDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/rowvideotraining_imgDownload"
+            android:layout_below="@+id/rowvideotraining_txtTitle"
+            android:layout_toRightOf="@+id/rowvideotraining_imgThumb"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="vsdl; ,dfs,mkjsdfjk knsnfkl snfalj  snlaj nan lavjan an an nal nalna naajfsa l" />
+        <ImageView
+            android:id="@+id/rowvideotraining_imgDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/margin_10dp"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:src="@drawable/downarrow" />
+        <TextView
+            android:id="@+id/rowvideotraining_txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rowvideotraining_txtDesc"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textSize="@dimen/font_12dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

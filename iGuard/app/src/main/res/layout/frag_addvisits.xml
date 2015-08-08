@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/fragaddvisit_linearTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/fragaddvisit_txtDateIn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/visit_dateIn"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/fragaddvisit_txtTimeIn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/visit_timeIn"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+                android:id="@+id/fragaddvisit_txtDateOut"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/visit_dateOut"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/fragaddvisit_txtTimeOut"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/visit_timeOut"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/fragaddvisit_editVisitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/round_white_grayborder"
+            android:gravity="top|left"
+            android:hint="@string/visit_visitor"
+            android:singleLine="true"
+            android:padding="@dimen/margin_8dp"
+            android:textSize="@dimen/font_14dp" />
+        <EditText
+            android:id="@+id/fragaddvisit_editPurpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/round_white_grayborder"
+            android:singleLine="true"
+            android:gravity="top|left"
+            android:hint="@string/visit_purpose"
+            android:padding="@dimen/margin_8dp"
+            android:textSize="@dimen/font_14dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp">
+            <ImageView
+                android:id="@+id/fragaddvisit_image"
+                android:layout_width="@dimen/margin_90dp"
+                android:src="@android:drawable/picture_frame"
+                android:scaleType="fitXY"
+                android:layout_height="@dimen/margin_80dp"/>
+            <EditText
+                android:id="@+id/fragaddvisit_editPeoplecount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/fragaddvisit_image"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:background="@drawable/round_white_grayborder"
+                android:gravity="top|left"
+                android:hint="@string/visit_peopleCount"
+                android:singleLine="true"
+                android:padding="@dimen/margin_8dp"
+                android:textSize="@dimen/font_14dp" />
+            <EditText
+                android:id="@+id/fragaddvisit_editVehicleno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/fragaddvisit_image"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@drawable/round_white_grayborder"
+                android:gravity="top|left"
+                android:singleLine="true"
+                android:layout_below="@+id/fragaddvisit_editPeoplecount"
+                android:hint="@string/visit_vehicleNo"
+                android:padding="@dimen/margin_8dp"
+                android:textSize="@dimen/font_14dp" />
+            </RelativeLayout>
+
+        <Button
+            android:id="@+id/fragaddvisit_btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/update_btn" />
+    </LinearLayout>
+
+
+</RelativeLayout>

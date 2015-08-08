@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/efefef" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/margin_10dp">
+
+
+        <TextView
+            android:id="@+id/rowtask_txtTaskName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/rowtask_txtDateTime"
+            android:padding="@dimen/margin_5dp"
+            android:singleLine="false"
+            android:text="Patrolling 1"
+            android:textSize="@dimen/font_15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rowtask_txtDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/rowtask_chkStatus"
+            android:ellipsize="end"
+            android:padding="@dimen/margin_5dp"
+            android:text="8:05 AM"
+            android:textSize="@dimen/font_13dp" />
+
+        <CheckBox
+            android:id="@+id/rowtask_chkStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

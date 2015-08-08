@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iGuard</string>
+
+    <!-- Login -->
+    <string name="login_email">Email</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_login">LOGIN</string>
+    <!-- Dashboard -->
+    <string name="dashboard_attendance">Attendance</string>
+    <string name="dashboard_contacts">Contacts</string>
+    <string name="dashboard_patrolling">Patrolling</string>
+    <string name="dashboard_chat">Chat</string>
+    <string name="dashboard_visits">Visits</string>
+    <string name="dashboard_tasks">Tasks</string>
+    <string name="dashboard_alerts">Alerts</string>
+    <string name="dashboard_messageboard">Message Board</string>
+
+    <!-- Leave -->
+    <string name="leave_managemet">Leave Management</string>
+    <string name="leave_from">From</string>
+    <string name="leave_time">Time</string>
+    <string name="leave_to">To</string>
+    <string name="leave_reason">Reason</string>
+    <string name="leave_apply">Apply</string>
+    <string name="leave_today">Today</string>
+    <string name="leave_attendance">Attendance</string>
+    <string name="leave_leave">Leave</string>
+    <string name="title_activity_act_drawer">ActDrawer</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- menu item -->
+    <string name="menu_visit">Visit</string>
+    <string name="menu_tasks">Tasks</string>
+    <string name="menu_replacement">Replacement</string>
+    <string name="menu_training">Training</string>
+    <string name="menu_aboutus">About Us</string>
+    <string name="menu_leave">Leave</string>
+    <string name="menu_logout">Logout</string>
+
+    <!-- Alert -->
+    <string name="alert_remark">Remark</string>
+    <string name="alert_header">Alert</string>
+    <string name="title_activity_act_splash">ActSplash</string>
+    <string name="videotraining_header">Video Training</string>
+
+    <!-- Visits -->
+    <string name="visit_dateIn">Date In</string>
+    <string name="visit_dateOut">Date Out</string>
+    <string name="visit_timeIn">Time In</string>
+    <string name="visit_timeOut">Time Out</string>
+    <string name="visit_visitor">Visitor</string>
+    <string name="visit_purpose">Purpose</string>
+    <string name="visit_peopleCount">People Count</string>
+    <string name="visit_vehicleNo">Vehicle No</string>
+    <string name="visit_update">Update</string>
+
+    <!-- ReplacementForm -->
+    <string name="replacement_header">Replacement (Form)</string>
+    <string name="replacement_replacement">Replacement</string>
+    <string name="replacement_clientPass">Client Password</string>
+    <string name="replacement_sign">Move finger below to Sign</string>
+    <string name="replacement_confirm">Confirm</string>
+    <string name="msg_location_enable">Please enable Location service from settings.</string>
+
+<!--Profile-->
+    <string name="profile_username">User name</string>
+    <string name="profile_guardname">Guard name</string>
+    <string name="profile_company">Company</string>
+    <string name="profile_shift">Shift</string>
+    <string name="profile_site">Site</string>
+    <string name="profile_post">Post</string>
+    <string name="profile_header">My Profile</string>
+</resources>

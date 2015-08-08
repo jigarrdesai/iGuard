@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/efefef" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_10dp">
+
+        <ImageView
+            android:id="@+id/rowmsgboard_img"
+            android:layout_width="@dimen/margin_60dp"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/rowmsgboard_txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/rowmsgboard_img"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textSize="@dimen/font_16dp"/>
+
+        <TextView
+            android:id="@+id/rowmsgboard_txtDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rowmsgboard_txtTitle"
+            android:layout_toRightOf="@+id/rowmsgboard_img"
+            android:ellipsize="end"
+
+            android:gravity="top"
+            android:textSize="@dimen/font_14dp"
+            android:text="nan lavjan an and  nal nalna naajfsa l" />
+        <TextView
+            android:id="@+id/rowmsgboard_txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rowmsgboard_txtDesc"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textSize="@dimen/font_12dp"/>
+    </RelativeLayout>
+</LinearLayout>

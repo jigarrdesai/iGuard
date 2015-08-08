@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_10dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/fragattend_linearIn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:layout_weight="1"
+            android:background="@color/efefef"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+
+                android:background="@color/white"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/replacement_img1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:src="@drawable/camera" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/replacement_txtGuardName1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:gravity="center"
+                android:text="Diff Maina"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/replacement_txtTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Date In time"
+                android:textSize="@dimen/font_12dp" />
+
+            <TextView
+                android:id="@+id/replacement_txtClientName1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Client Name"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/replacement_txtLocation1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Location"
+                android:textSize="@dimen/font_13dp" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/conect_icon"/>
+        <LinearLayout
+            android:id="@+id/fragattend_linearOut"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_5dp"
+            android:layout_weight="1"
+            android:background="@color/efefef"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+
+                android:background="@color/white"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/replacement_img2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/camera" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/replacement_txtGuardName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:gravity="center"
+                android:text="Allen Kariyuki"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/replacement_txtTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Date In time"
+                android:textSize="@dimen/font_12dp" />
+
+            <TextView
+                android:id="@+id/replacement_txtClientName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Client Name"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/replacement_txtLocation2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Location"
+                android:textSize="@dimen/font_13dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/replacement_txtClientPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:background="@drawable/round_white_grayborder"
+        android:gravity="top|left"
+        android:hint="@string/replacement_clientPass"
+        android:padding="@dimen/margin_8dp"
+        android:textSize="@dimen/font_14dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:gravity="left"
+        android:hint="@string/replacement_sign"
+        android:padding="@dimen/margin_8dp"
+        android:textSize="@dimen/font_14dp" />
+
+    <com.maxpro.iguard.views.DrawingView
+        android:id="@+id/replacement_sign"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_100dp"
+        android:background="@drawable/round_white_grayborder" />
+
+    <Button
+        android:id="@+id/replacement_btnConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:background="@drawable/confirm_btn" />
+</LinearLayout>

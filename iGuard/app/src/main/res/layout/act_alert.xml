@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_10dp"
+    tools:context="com.maxpro.iguard.activity.ActAlert">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/alert_mapFrag"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/alert_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/alert_btnPost"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@drawable/round_white_grayborder"
+                android:gravity="top"
+                android:hint="@string/alert_remark"
+                android:minLines="4"
+                android:padding="@dimen/margin_10dp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/alert_btnPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="Post"
+                android:padding="@dimen/margin_5dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_18dp"
+                android:background="@drawable/bluebtn" />
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView
+        android:textColor="@color/blue"
+        android:id="@+id/alert_txtTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_12dp"/>
+</RelativeLayout>

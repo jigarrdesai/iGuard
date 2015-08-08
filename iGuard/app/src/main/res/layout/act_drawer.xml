@@ -1,0 +1,230 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.maxpro.iguard.views.IGHeader
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header">
+
+        <FrameLayout
+            android:id="@+id/drawer_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/linearDrawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/drawer_relProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/efefef"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/drawer_imgProfile"
+                    android:layout_width="@dimen/margin_70dp"
+                    android:layout_height="@dimen/margin_70dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/contacts" />
+
+                <TextView
+                    android:id="@+id/drawer_txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:text="Gaurd Name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_18dp" />
+
+                <Button
+                    android:id="@+id/drawer_btnSyncronize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/drawer_imgProfile"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:background="@drawable/round_blue"
+                    android:paddingBottom="@dimen/margin_5dp"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:paddingRight="@dimen/margin_10dp"
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:text="Syncronize"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_12dp" />
+
+                <TextView
+                    android:id="@+id/drawer_txtShift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/drawer_imgProfile"
+                    android:layout_marginLeft="@dimen/margin_10dp"
+                    android:layout_toRightOf="@+id/drawer_btnSyncronize"
+                    android:background="@drawable/round_blue"
+                    android:paddingBottom="@dimen/margin_5dp"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:paddingRight="@dimen/margin_10dp"
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:text="Logout"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_12dp" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/list_slidermenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/drawer_txtVisit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:drawableLeft="@drawable/sel_menu_visit"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:background="@drawable/sel_menu_item"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:text="@string/menu_visit"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/efefef" />
+
+                <TextView
+                    android:id="@+id/drawer_txtTasks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:drawableLeft="@drawable/sel_menu_task"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:background="@drawable/sel_menu_item"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:text="@string/menu_tasks"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/efefef" />
+
+                <TextView
+                    android:id="@+id/drawer_txtReplacement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:drawableLeft="@drawable/sel_menu_replace"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:background="@drawable/sel_menu_item"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:text="@string/menu_replacement"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/efefef" />
+
+                <TextView
+                    android:id="@+id/drawer_txtTraining"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:drawableLeft="@drawable/sel_menu_training"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:background="@drawable/sel_menu_item"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:text="@string/menu_training"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/efefef" />
+
+                <TextView
+                    android:id="@+id/drawer_txtLeave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:drawableLeft="@drawable/sel_menu_logout"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:text="@string/menu_leave"
+                    android:background="@drawable/sel_menu_item"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/efefef" />
+                <TextView
+                    android:id="@+id/drawer_txtAboutus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:drawableLeft="@drawable/sel_menu_logout"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:text="@string/menu_aboutus"
+                    android:background="@drawable/sel_menu_item"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/efefef" />
+
+                <TextView
+                    android:id="@+id/drawer_txtLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sel_menu_item"
+                    android:layout_toRightOf="@+id/drawer_imgProfile"
+                    android:drawableLeft="@drawable/sel_menu_logout"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:text="@string/menu_logout"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/efefef" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

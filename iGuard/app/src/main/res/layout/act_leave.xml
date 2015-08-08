@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/leave_linearTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/leave_txtFromDt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/leave_from"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/leave_txtFromTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/leave_time"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+                android:id="@+id/leave_txtToDt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/leave_to"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+
+            <TextView
+                android:id="@+id/leave_txtToTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_white_grayborder"
+                android:hint="@string/leave_time"
+                android:padding="@dimen/margin_5dp"
+                android:textSize="@dimen/font_14dp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/leave_editReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/round_white_grayborder"
+            android:gravity="top|left"
+            android:hint="@string/leave_reason"
+            android:minLines="4"
+            android:padding="@dimen/margin_8dp"
+            android:textSize="@dimen/font_14dp" />
+
+        <Button
+            android:id="@+id/leave_btnApply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/apply_btn" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/leave_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_marginRight="@dimen/margin_10dp"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/leave_linearTop"
+        android:divider="@android:color/black"
+        android:dividerHeight="1dp"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

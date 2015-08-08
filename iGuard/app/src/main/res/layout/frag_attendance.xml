@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/margin_10dp">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/fragattend_mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/fragattend_linearBottom" />
+
+    <LinearLayout
+        android:id="@+id/fragattend_linearBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_10dp">
+
+        <LinearLayout
+            android:id="@+id/fragattend_linearIn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:layout_weight="1"
+
+            android:background="@color/efefef"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/margin_8dp"
+                android:background="@color/white"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/fragattend_imgIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:src="@drawable/camera" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fragattend_txtIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Date\nIn time" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragattend_linearOut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_5dp"
+            android:layout_weight="1"
+            android:background="@color/efefef"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/margin_8dp"
+                android:background="@color/white"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/fragattend_imgOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/camera" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fragattend_txtOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Date\nOut time" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/heding_bg">
+
+    <ImageView
+        android:id="@+id/header_imgMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:padding="@dimen/margin_10dp"
+        android:src="@drawable/iguard_menu" />
+
+    <TextView
+        android:id="@+id/header_txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:layout_toRightOf="@+id/header_imgMenu"
+        android:text="Header"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_22dp" />
+
+    <Button
+        android:id="@+id/header_btnDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/header_imgArrow"
+        android:background="@drawable/round_blue"
+        android:padding="@dimen/margin_7dp"
+        android:text="Done"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_10dp" />
+
+    <ImageView
+        android:id="@+id/header_imgArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/margin_10dp"
+        android:src="@drawable/back_arrow" />
+</RelativeLayout>

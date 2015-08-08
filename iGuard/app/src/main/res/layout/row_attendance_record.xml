@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_10dp"
+    android:background="@drawable/text_bg">
+
+    <ImageView
+        android:id="@+id/rowattendrecord_imgStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:src="@drawable/p_withtext" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_toRightOf="@+id/rowattendrecord_imgStatus"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rowattendrecord_txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="01-February-2015" />
+
+        <TextView
+            android:id="@+id/rowattendrecord_txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="8:05 AM to 3:10 PM" />
+    </LinearLayout>
+</RelativeLayout>

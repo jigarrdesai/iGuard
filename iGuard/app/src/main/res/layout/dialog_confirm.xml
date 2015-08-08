@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_10dp"
+    android:background="@drawable/round_white_grayborder"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_10dp">
+
+    <TextView
+        android:id="@+id/dialogconfirm_txtHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dialogconfirm_txtMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:text="Small Text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_16dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_20dp">
+
+        <Button
+            android:id="@+id/dialogconfirm_btnCancel"
+            android:layout_width="@dimen/margin_100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:background="@color/blue"
+            android:padding="@dimen/margin_10dp"
+            android:text="Cancel"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/dialogconfirm_btnOk"
+            android:layout_width="@dimen/margin_100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="@dimen/margin_10dp"
+            android:background="@color/blue"
+            android:padding="@dimen/margin_10dp"
+            android:text="OK"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

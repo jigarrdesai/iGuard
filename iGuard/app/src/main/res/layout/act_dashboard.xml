@@ -1,0 +1,180 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.maxpro.iguard.activity.ActDashboard" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/dashboard_linearAttendance"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/white" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/attendance"
+                    android:gravity="center"
+                    android:text="@string/dashboard_attendance" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dashboard_linearContact"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/efefef" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/contacts"
+                    android:gravity="center"
+                    android:text="@string/dashboard_contacts" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/dashboard_linearPatrolling"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/efefef" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/patrolling"
+                    android:gravity="center"
+                    android:text="@string/dashboard_patrolling" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dashboard_linearChat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/chat"
+                    android:gravity="center"
+                    android:text="@string/dashboard_chat" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/dashboard_linearVisit"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/visit"
+                    android:gravity="center"
+                    android:text="@string/dashboard_visits" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:id="@+id/dashboard_linearTask"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/efefef">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/tasks"
+                    android:gravity="center"
+                    android:text="@string/dashboard_tasks" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/dashboard_linearAlert"
+                android:background="@color/efefef"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                   
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/alerts"
+                    android:gravity="center"
+                    android:text="@string/dashboard_alerts" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dashboard_linearMsgBoard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:background="@color/white" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:drawableTop="@drawable/message_board"
+                    android:gravity="center"
+                    android:text="@string/dashboard_messageboard" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/efefef" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_10dp">
+
+        <ImageView
+            android:id="@+id/rowchatlist_img"
+            android:layout_width="@dimen/margin_60dp"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/rowchatlist_txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/rowchatlist_img"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="@dimen/font_18dp"
+            android:textStyle="bold"
+            android:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/rowchatlist_txtUserType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rowchatlist_txtName"
+            android:layout_toRightOf="@+id/rowchatlist_img"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:gravity="top"
+            android:textSize="@dimen/font_15dp"
+            android:text="nan lavjan an an nal nalna naajfsa l" />
+        <TextView
+            android:id="@+id/rowchatlist_txtMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rowchatlist_txtUserType"
+            android:layout_toRightOf="@+id/rowchatlist_img"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="@dimen/font_15dp"
+            android:gravity="top"
+            android:text="nan lavjan an an nal nalna naajfsa l" />
+
+    </RelativeLayout>
+</LinearLayout>

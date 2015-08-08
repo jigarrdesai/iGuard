@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/round_white_grayborder"
+    android:padding="@dimen/margin_10dp"
+    android:layout_margin="@dimen/margin_10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/app_name"
+        android:id="@+id/textView"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Small Text"
+        android:id="@+id/dialogvalid_txtMsg"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_16dp"
+        android:layout_marginTop="@dimen/margin_10dp" />
+
+    <Button
+        android:layout_width="@dimen/margin_100dp"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:id="@+id/dialogvalid_btnOk"
+        android:layout_gravity="right"
+        android:background="@color/blue"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:padding="@dimen/margin_10dp"
+        />
+</LinearLayout>

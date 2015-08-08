@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/efefef" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/rowpatrolling_imgPatrolling"
+        android:padding="@dimen/margin_10dp">
+
+        <ImageView
+            android:id="@+id/rowpatrolling_imgDummy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/p_withtext"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/rowpatrolling_imgPatrolling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/picture_frame"
+            android:layout_alignBottom="@+id/rowpatrolling_imgDummy"
+            android:layout_alignLeft="@+id/rowpatrolling_imgDummy"
+            android:layout_alignRight="@+id/rowpatrolling_imgDummy"
+            android:layout_alignTop="@+id/rowpatrolling_imgDummy" />
+
+        <TextView
+            android:id="@+id/rowpatrolling_txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/rowpatrolling_txtTime"
+            android:layout_toRightOf="@+id/rowpatrolling_imgPatrolling"
+            android:padding="@dimen/margin_5dp"
+            android:singleLine="true"
+            android:text="Patrolling 1"
+            android:textSize="@dimen/font_15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rowpatrolling_txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/rowpatrolling_chkStatus"
+            android:ellipsize="end"
+            android:padding="@dimen/margin_5dp"
+            android:text="8:05 AM"
+            android:visibility="gone"
+            android:textSize="@dimen/font_13dp" />
+
+        <CheckBox
+            android:id="@+id/rowpatrolling_chkStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

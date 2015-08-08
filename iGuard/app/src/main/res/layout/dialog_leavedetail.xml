@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/text_bg"
+    android:padding="@dimen/margin_10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="From"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:ellipsize="end"
+            android:text="To"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:text="Status"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialogleave_imgStatus"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:text="Reason"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialogleave_txtFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="8:05 AM to 3:10 PM"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+
+        <TextView
+            android:id="@+id/dialogleave_txtTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:ellipsize="end"
+            android:text="8:05 AM to 3:10 PM"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+
+        <TextView
+            android:id="@+id/dialogleave_txtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialogleave_imgStatus"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:text="8:05 AM to 3:10 PM"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+
+        <TextView
+            android:id="@+id/dialogleave_txtReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialogleave_imgStatus"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:text="8:05 AM to 3:10 PM"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chathistory_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearBottom"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:layout_margin="@dimen/margin_5dp"
+        android:id="@+id/linearBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/chathistory_editMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/round_white_grayborder"
+            android:padding="@dimen/margin_10dp"
+            android:hint="Type Message"
+            android:textSize="@dimen/font_15dp" />
+
+        <ImageView
+            android:id="@+id/chathistory_imgSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_5dp"
+            android:src="@android:drawable/ic_menu_send" />
+
+    </LinearLayout>
+</RelativeLayout>

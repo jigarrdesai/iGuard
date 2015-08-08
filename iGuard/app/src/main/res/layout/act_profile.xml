@@ -1,0 +1,147 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.maxpro.iguard.activity.ActProfile">
+
+    <com.maxpro.iguard.views.IGHeader
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_10dp">
+
+        <TableRow
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_guardname"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+
+            <TextView
+                android:id="@+id/profile_txtGuardname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:text="Test"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_15dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_username"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+
+            <TextView
+                android:id="@+id/profile_txtUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:text="Test"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_15dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_company"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+
+            <TextView
+                android:id="@+id/profile_txtCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:text="Test"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_15dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_site"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+
+            <TextView
+                android:id="@+id/profile_txtSite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:text="Test"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_15dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_post"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+
+            <TextView
+                android:id="@+id/profile_txtPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:text="Test"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_15dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_shift"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+
+            <TextView
+                android:id="@+id/profile_txtShift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:text="Test"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_15dp" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
