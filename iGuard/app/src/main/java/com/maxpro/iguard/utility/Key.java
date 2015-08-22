@@ -215,4 +215,7 @@ public static class Attendance{
         public static final String deleted="deleted";
 
     }
+    public static class Branch {
+        public static final String NAME = "Branch";
+    }
 }

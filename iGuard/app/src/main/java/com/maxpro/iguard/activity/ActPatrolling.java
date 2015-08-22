@@ -157,15 +157,31 @@ public class ActPatrolling extends ActDrawer implements com.google.android.gms.l
                         model.objectId = obj.getObjectId();
                         try {
                             model.company = obj.getParseObject(Key.AutoPatrolling.company).fetchIfNeeded().getObjectId();
-                            model.branch = obj.getParseObject(Key.AutoPatrolling.branch).fetchIfNeeded().getObjectId();
-                            model.supervisor = obj.getParseObject(Key.AutoPatrolling.supervisor).fetchIfNeeded().getObjectId();
-                            model.userPointer = obj.getParseObject(Key.AutoPatrolling.userPointer).fetchIfNeeded().getObjectId();
-                            model.shift = obj.getParseObject(Key.AutoPatrolling.shift).fetchIfNeeded().getObjectId();
                         } catch (Exception e1) {
                             e1.printStackTrace();
                         }
-
-
+                        try {
+                            model.branch = obj.getParseObject(Key.AutoPatrolling.branch).fetchIfNeeded().getObjectId();
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
+                        try {
+                            model.supervisor = obj.getParseObject(Key.AutoPatrolling.supervisor).fetchIfNeeded().getObjectId();
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
+                        try{
+                            model.userPointer = obj.getParseObject(Key.AutoPatrolling.userPointer).fetchIfNeeded().getObjectId();
+                        }
+                        catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
+                        try{
+                            model.shift = obj.getParseObject(Key.AutoPatrolling.shift).fetchIfNeeded().getObjectId();
+                        }
+                        catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
                         model.type = obj.getString(Key.AutoPatrolling.type);
                         model.patrollingDate = obj.getString(Key.AutoPatrolling.patrollingDate);
                         model.patrollingTime = obj.getString(Key.AutoPatrolling.patrollingTime);
@@ -179,7 +195,7 @@ public class ActPatrolling extends ActDrawer implements com.google.android.gms.l
 
                         // long start=Func.getMillis(Var.DF_DATETIME,currentDate+" "+model.patrollingTime);
                         // long end=Func.getMillis(Var.DF_DATETIME,currentDate+" "+model.patrollingEndTime);
-                        long patrollingTime=Func.getMillis(Var.DF_DATETIME,currentDate+" "+model.patrollingTime);
+                        long patrollingTime = Func.getMillis(Var.DF_DATETIME, currentDate + " " + model.patrollingTime);
                         String inTime = currentUser.getParseObject(Key.User.shift).getString("shiftInTime");
                         String outTime = currentUser.getParseObject(Key.User.shift).getString("shiftOutTime");
                         long start = Func.getMillis(Var.DF_DATETIME, currentDate + " " + inTime);
@@ -189,18 +205,18 @@ public class ActPatrolling extends ActDrawer implements com.google.android.gms.l
                         Log.e("milli", "start= " + start + " end= " + end + " diff= " + diff);
                         Log.e("milli", "objectId = " + model.objectId);
                         Log.e("milli", "start= " + Func.getStringFromMilli(Var.DF_DATETIME, start) + " end= " + Func.getStringFromMilli(Var.DF_DATETIME, end) + " diff= " + Func.getStringFromMilli(Var.DF_DATETIME, diff));
-                        if (patrollingTime>start && patrollingTime<end && patrollingTime>= System.currentTimeMillis()) {
-                            long randomTime= 6000 + ((long) (rand.nextDouble() * (15*60*1000 - 6000)));
+                        if (patrollingTime > start && patrollingTime < end && patrollingTime >= System.currentTimeMillis()) {
+                            long randomTime = 6000 + ((long) (rand.nextDouble() * (15 * 60 * 1000 - 6000)));
                             Log.e("milli", "randomTime= " + Func.getStringFromMilli(Var.DF_DATETIME, randomTime));
                             Log.e("milli", "patrollingTime= " + Func.getStringFromMilli(Var.DF_DATETIME, patrollingTime));
-                            Log.e("milli", "actualTime= " + Func.getStringFromMilli(Var.DF_DATETIME, patrollingTime-randomTime));
+                            Log.e("milli", "actualTime= " + Func.getStringFromMilli(Var.DF_DATETIME, patrollingTime - randomTime));
                             Log.e("milli", "future");
                             Intent myIntent = new Intent(ActPatrolling.this, ReceiverAlarm.class);
                             myIntent.putExtra(Var.IntentObjId, model.objectId);
                             PendingIntent pendingIntent = PendingIntent.getBroadcast(ActPatrolling.this, (int) System.currentTimeMillis(), myIntent, 0);
 
                             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                            alarmManager.set(AlarmManager.RTC, patrollingTime-randomTime, pendingIntent);
+                            alarmManager.set(AlarmManager.RTC, patrollingTime - randomTime, pendingIntent);
                         } else {
                             Log.e("milli", "past");
                         }

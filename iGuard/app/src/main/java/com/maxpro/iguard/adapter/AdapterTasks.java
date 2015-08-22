@@ -131,7 +131,7 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
         ParseObject attendObject = new ParseObject(Key.TaskReport.NAME);
 
         attendObject.put(Key.TaskReport.taskName, modelTask.taskName);
-        attendObject.put(Key.TaskReport.taskDescription, modelTask.taskDescription);
+        //attendObject.put(Key.TaskReport.taskDescription, modelTask.taskDescription);
         attendObject.put(Key.TaskReport.taskDateTime, modelTask.taskDateTime);
         ParseObject taskPointer = ParseObject.create(Key.Task.NAME);
         taskPointer.setObjectId(modelTask.objectId);

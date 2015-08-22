@@ -173,6 +173,7 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
                 case 100:
                     //photo = (Bitmap) data.getExtras().get("data");
                     photo = BitmapFactory.decodeFile(imageFilePath);
+                    photo=Bitmap.createScaledBitmap(photo, 200, 200, false);
                     imgPhoto.setImageBitmap(photo);
 
                     break;

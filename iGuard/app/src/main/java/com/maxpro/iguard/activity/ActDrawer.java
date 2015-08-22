@@ -132,8 +132,13 @@ public class ActDrawer extends FragmentActivity {
                 case R.id.drawer_txtVisit:
                     toggleMenuSelection(view);
                     toggleDrawer();
-
-                    //startActivity(new Intent(ActDrawer.this, ActLeave.class));
+                    if (ActDrawer.this instanceof ActVisits) {
+                        return;
+                    }
+                    startActivity(new Intent(ActDrawer.this, ActVisits.class));
+                    if (!(ActDrawer.this instanceof ActDashboard)) {
+                        finish();
+                    }
                     break;
                 case R.id.drawer_txtTasks:
                     toggleMenuSelection(view);
@@ -238,6 +243,8 @@ public class ActDrawer extends FragmentActivity {
         findViewById(R.id.drawer_txtTraining).setOnClickListener(click);
         findViewById(R.id.drawer_txtTasks).setOnClickListener(click);
         findViewById(R.id.drawer_txtReplacement).setOnClickListener(click);
+        findViewById(R.id.drawer_txtVisit).setOnClickListener(click);
+
     }
 
     protected void setBackButtonClick(final Activity activity) {

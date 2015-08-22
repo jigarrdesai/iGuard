@@ -49,7 +49,7 @@ public class ActMsgBoard extends ActDrawer {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(Key.MsgBoard.NAME);
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery(Key.MsgBoard.NAME);
         Date midnight = new Date();
-        midnight.setTime(System.currentTimeMillis()-(1000*60*60*24*15));
+        midnight.setTime(System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 15));
         midnight.setHours(0);
         midnight.setMinutes(0);
         midnight.setSeconds(0);
@@ -57,8 +57,10 @@ public class ActMsgBoard extends ActDrawer {
         query2.whereGreaterThan("createdAt", midnight);
         ParseObject branch=currentUser.getParseObject(Key.User.branch);
         query.whereEqualTo(Key.MsgBoard.branch, branch);
-        query.whereNotEqualTo(Key.MsgBoard.deleted,true);
-        query2.whereDoesNotExist(Key.MsgBoard.branch);
+        query.whereNotEqualTo(Key.MsgBoard.deleted, true);
+        ParseObject dummyBranch=ParseObject.create(Key.Branch.NAME);
+        dummyBranch.setObjectId("0");
+        query2.whereEqualTo(Key.MsgBoard.branch,dummyBranch);
         query2.whereNotEqualTo(Key.MsgBoard.deleted,true);
         List<ParseQuery<ParseObject>>queries=new ArrayList<ParseQuery<ParseObject>>();
         queries.add(query);

@@ -47,9 +47,11 @@ private RecyclerView recyclerView;
         ParseObject branch=currentUser.getParseObject(Key.User.branch);
 
         query.whereEqualTo(Key.Video.branch, branch);
-        query.whereNotEqualTo(Key.Video.deleted,true);
+        query.whereNotEqualTo(Key.Video.deleted, true);
 
-        query2.whereDoesNotExist(Key.Video.branch);
+        ParseObject dummyBranch=ParseObject.create(Key.Branch.NAME);
+        dummyBranch.setObjectId("0");
+        query2.whereEqualTo(Key.Video.branch, dummyBranch);
         query2.whereNotEqualTo(Key.Video.deleted,true);
 
         queries.add(query);

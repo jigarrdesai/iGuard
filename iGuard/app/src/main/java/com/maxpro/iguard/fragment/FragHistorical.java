@@ -50,7 +50,7 @@ public class FragHistorical extends Fragment {
         midnight.setHours(0);
         midnight.setMinutes(0);
         midnight.setSeconds(0);
-        parseQuery.whereLessThan("createdAt", midnight);
+        //parseQuery.whereLessThan("createdAt", midnight);
         parseQuery.whereExists(Key.Visits.dateOut);
         parseQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
