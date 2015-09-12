@@ -47,7 +47,7 @@ import java.util.Calendar;
 public class FragAddVisits extends Fragment implements View.OnClickListener {
 
     private TextView txtDateIn, txtDateOut, txtTimeIn, txtTimeOut;
-    private EditText editVisitor, editPurpose, editPeople, editVehicle;
+    private EditText editVisitor, editPurpose, editPeople, editVehicle,editDocName,editDocNum;
     private Button btnUpdate;
     private ImageView imgPhoto;
     private int currentHour, currentMinute, currentDay, currentMonth, currentYear;
@@ -77,6 +77,8 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
             String purpose = bundle.getString(Key.Visits.purpose);
             String peopleCount = bundle.getString(Key.Visits.peopleCount);
             String vehicleNum = bundle.getString(Key.Visits.vehicleNum);
+            String documentName = bundle.getString(Key.Visits.documentName);
+            String documentNum = bundle.getString(Key.Visits.documentNumber);
             txtDateIn.setText(datein);
             txtDateOut.setText(dateout);
             txtTimeIn.setText(timein);
@@ -85,12 +87,16 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
             editPeople.setText(peopleCount);
             editPurpose.setText(purpose);
             editVehicle.setText(vehicleNum);
+            editDocName.setText(documentName);
+            editDocNum.setText(documentNum);
             txtDateIn.setEnabled(false);
             txtTimeIn.setEnabled(false);
             editPurpose.setEnabled(false);
             editVehicle.setEnabled(false);
             editVisitor.setEnabled(false);
             editPeople.setEnabled(false);
+            editDocNum.setEnabled(false);
+            editDocName.setEnabled(false);
             imgPhoto.setEnabled(false);
         } else {
             txtDateOut.setEnabled(false);
@@ -112,7 +118,8 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
         editPurpose = (EditText) rootView.findViewById(R.id.fragaddvisit_editPurpose);
         editPeople = (EditText) rootView.findViewById(R.id.fragaddvisit_editPeoplecount);
         editVehicle = (EditText) rootView.findViewById(R.id.fragaddvisit_editVehicleno);
-
+        editDocName = (EditText) rootView.findViewById(R.id.fragaddvisit_editDoc);
+        editDocNum = (EditText) rootView.findViewById(R.id.fragaddvisit_editDocNumber);
         btnUpdate = (Button) rootView.findViewById(R.id.fragaddvisit_btnUpdate);
 
         imgPhoto.setOnClickListener(this);
@@ -216,6 +223,14 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
             Func.showValidDialog(getActivity(), "Please enter Vehicle No.");
             return false;
         }
+        if (TextUtils.isEmpty(editDocName.getText().toString().trim())) {
+            Func.showValidDialog(getActivity(), "Please enter Document Name.");
+            return false;
+        }
+        if (TextUtils.isEmpty(editDocNum.getText().toString().trim())) {
+            Func.showValidDialog(getActivity(), "Please enter Document No.");
+            return false;
+        }
         if (TextUtils.isEmpty(objId) && photo == null) {
             Func.showValidDialog(getActivity(), "Please capture photo.");
             return false;
@@ -250,6 +265,8 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
         visitObject.put(Key.Visits.purpose, editPurpose.getText().toString());
         visitObject.put(Key.Visits.peopleCount, editPeople.getText().toString());
         visitObject.put(Key.Visits.vehicleNum, editVehicle.getText().toString());
+        visitObject.put(Key.Visits.documentNumber, editDocNum.getText().toString());
+        visitObject.put(Key.Visits.documentName, editDocName.getText().toString());
         ParseUser currentUser = ParseUser.getCurrentUser();
         visitObject.put(Key.Visits.userPointer, currentUser);
         visitObject.put(Key.Visits.branch, currentUser.getParseObject(Key.User.branch));
@@ -284,6 +301,8 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
         editPurpose.setText("");
         editPeople.setText("");
         editVehicle.setText("");
+        editDocName.setText("");
+        editDocNum.setText("");
         photo = null;
         imgPhoto.setImageResource(android.R.drawable.picture_frame);
     }

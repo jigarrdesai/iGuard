@@ -96,6 +96,8 @@ public class ActVisits extends ActDrawer  implements View.OnClickListener {
         bundle.putString(Key.Visits.purpose, visit.getString(Key.Visits.purpose));
         bundle.putString(Key.Visits.peopleCount, visit.getString(Key.Visits.peopleCount));
         bundle.putString(Key.Visits.vehicleNum, visit.getString(Key.Visits.vehicleNum));
+        bundle.putString(Key.Visits.documentName, visit.getString(Key.Visits.documentName));
+        bundle.putString(Key.Visits.documentNumber, visit.getString(Key.Visits.documentNumber));
 
         FragAddVisits fragAddVisit=new FragAddVisits();
         fragAddVisit.setArguments(bundle);

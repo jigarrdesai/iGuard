@@ -14,5 +14,6 @@ public class ModelTask {
     public String userPointer = "userPointer";
     public String supervisor = "supervisor";
     public String isComplete = "isComplete";
+    public String performedTime="";
 
 }

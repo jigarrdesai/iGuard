@@ -56,7 +56,8 @@
     <string name="visit_peopleCount">People Count</string>
     <string name="visit_vehicleNo">Vehicle No</string>
     <string name="visit_update">Update</string>
-
+    <string name="visit_documentName">Document Name</string>
+    <string name="visit_documentNumber">Document Number</string>
     <!-- ReplacementForm -->
     <string name="replacement_header">Replacement (Form)</string>
     <string name="replacement_replacement">Replacement</string>

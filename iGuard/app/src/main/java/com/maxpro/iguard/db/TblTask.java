@@ -23,7 +23,7 @@ public class TblTask {
     public static final String userPointer = "userPointer";
     public static final String supervisor = "supervisor";
 	public static String isComplete = "isComplete";
-
+    public static final String performedTime = "performedTime";
 
 	public static ArrayList<ModelTask> selectTask() {
 		SQLiteDatabase db = IGuard.database;
@@ -45,7 +45,7 @@ public class TblTask {
                 model.userPointer = c.getString(c.getColumnIndex(userPointer));
                 model.supervisor = c.getString(c.getColumnIndex(supervisor));
                 model.isComplete = c.getString(c.getColumnIndex(isComplete));
-
+                model.performedTime = c.getString(c.getColumnIndex(performedTime));
                 arrTask.add(model);
 			} while (c.moveToNext());
 			c.close();
@@ -70,6 +70,7 @@ public class TblTask {
             model.userPointer = c.getString(c.getColumnIndex(userPointer));
             model.supervisor = c.getString(c.getColumnIndex(supervisor));
             model.isComplete = c.getString(c.getColumnIndex(isComplete));
+            model.performedTime = c.getString(c.getColumnIndex(performedTime));
             c.close();
         }
         return model;
@@ -87,7 +88,7 @@ public class TblTask {
         values.put(userPointer, model.userPointer);
         values.put(supervisor, model.supervisor);
         values.put(isComplete, model.isComplete);
-
+        values.put(performedTime,model.performedTime);
 		return db.insertOrThrow(TABLE, null, values);
 	}
 
@@ -95,7 +96,7 @@ public class TblTask {
 		SQLiteDatabase db = IGuard.database;
 		ContentValues values = new ContentValues();
 
-
+        values.put(performedTime, model.performedTime);
 		values.put(isComplete, model.isComplete);
 
 		return db.update(TABLE, values, objectId+"='"+id+"'", null);
