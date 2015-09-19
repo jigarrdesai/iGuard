@@ -23,7 +23,7 @@ public class Var {
     public static final String TYPE_LEAVE_W="W";
 
     public static final String DF_DATE="dd-MM-yyyy";
-    public static final String DF_DATETIME="dd-MM-yyyy HH:mm";
+    public static final String DF_DATETIME="dd-MM-yyyy HH:mm:ss";
     public static final String DF_TIME="hh:mm:ss";
     public static final String Last_FetchDateTask="Last_FetchDateTask";
     public static final String Last_FetchDatePatrolling="Last_FetchDatePatrolling";
@@ -31,5 +31,7 @@ public class Var {
     public static final String IntentObjId="IntentObjId";
     public static final String IntentHeader="IntentHeader";
     public static final String IntentUrl="IntentUrl";
+
+    public static final String REPLACEMENT_CS="CS";/*confirmed*/
 
 }

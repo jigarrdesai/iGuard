@@ -27,7 +27,7 @@ public class TblTask {
 
 	public static ArrayList<ModelTask> selectTask() {
 		SQLiteDatabase db = IGuard.database;
-		String query = "select * from " + TABLE;
+		String query = "select * from " + TABLE+" order by "+taskDateTime;
 		ArrayList<ModelTask> arrTask = null;
 		Cursor c = db.rawQuery(query, null);
 		if (c != null && c.moveToFirst()) {

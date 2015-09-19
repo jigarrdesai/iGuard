@@ -38,6 +38,7 @@ import com.parse.ParseQuery;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -170,16 +171,14 @@ public class ActPatrolling extends ActDrawer implements com.google.android.gms.l
                         } catch (Exception e1) {
                             e1.printStackTrace();
                         }
-                        try{
+                        try {
                             model.userPointer = obj.getParseObject(Key.AutoPatrolling.userPointer).fetchIfNeeded().getObjectId();
-                        }
-                        catch (Exception e1) {
+                        } catch (Exception e1) {
                             e1.printStackTrace();
                         }
-                        try{
+                        try {
                             model.shift = obj.getParseObject(Key.AutoPatrolling.shift).fetchIfNeeded().getObjectId();
-                        }
-                        catch (Exception e1) {
+                        } catch (Exception e1) {
                             e1.printStackTrace();
                         }
                         model.type = obj.getString(Key.AutoPatrolling.type);
@@ -200,6 +199,12 @@ public class ActPatrolling extends ActDrawer implements com.google.android.gms.l
                         String outTime = currentUser.getParseObject(Key.User.shift).getString("shiftOutTime");
                         long start = Func.getMillis(Var.DF_DATETIME, currentDate + " " + inTime);
                         long end = Func.getMillis(Var.DF_DATETIME, currentDate + " " + outTime);
+                        if (!new Date(end).after(new Date(start))) {
+                            Calendar cal=Calendar.getInstance();
+                            cal.setTime(new Date(end));
+                            cal.add(Calendar.DAY_OF_MONTH,1);
+                            end=cal.getTimeInMillis();
+                        }
                         Random rand = new Random();
                         long diff = start + ((long) (rand.nextDouble() * (end - start)));
                         Log.e("milli", "start= " + start + " end= " + end + " diff= " + diff);

@@ -228,4 +228,11 @@ public class Key {
     public static class Branch {
         public static final String NAME = "Branch";
     }
+
+    public static class AboutUs {
+        public static final String NAME = "about";
+        public static final String description = "description";
+        public static final String name = "name";
+        public static final String image = "image";
+    }
 }

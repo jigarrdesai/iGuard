@@ -59,6 +59,8 @@
     <dimen name="margin_80dp">80dp</dimen>
     <dimen name="margin_90dp">90dp</dimen>
     <dimen name="margin_100dp">100dp</dimen>
+    <dimen name="margin_150dp">150dp</dimen>
+    <dimen name="margin_160dp">160dp</dimen>
 
     <dimen name="font_1dp">1dp</dimen>
     <dimen name="font_2dp">1dp</dimen>

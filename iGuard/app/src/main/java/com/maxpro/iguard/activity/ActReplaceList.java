@@ -13,6 +13,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActReplaceList extends ActDrawer {
@@ -42,7 +43,15 @@ public class ActReplaceList extends ActDrawer {
         progressDialog.show();
         ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery(Key.Replacement.NAME);
         parseQuery.whereEqualTo(Key.Replacement.userPointer, currentUser);
-        parseQuery.findInBackground(new FindCallback<ParseObject>() {
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(Key.Replacement.NAME);
+        query.whereEqualTo(Key.Replacement.replacedUserPointer, currentUser);
+
+        ArrayList<ParseQuery<ParseObject>>arrQuery=new ArrayList<ParseQuery<ParseObject>>();
+        arrQuery.add(parseQuery);
+        arrQuery.add(query);
+        ParseQuery<ParseObject> mainQuery= ParseQuery.or(arrQuery);
+        mainQuery .findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> parseObjects, ParseException e) {
                 progressDialog.dismiss();

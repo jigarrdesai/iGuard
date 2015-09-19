@@ -99,14 +99,14 @@ public class AdapterPatrolling extends Adapter<AdapterPatrolling.ItemHolder> {
             arg0.chkStatus.setEnabled(false);
             arg0.imgPatrolling.setEnabled(false);
             arg0.txtTime.setVisibility(View.VISIBLE);
-            IGuard.imageLoader.displayImage("file:///"+modelAutoPatrolling.imagePath, arg0.imgPatrolling, Func.getDisplayOption());
+            IGuard.imageLoader.displayImage("file:///" + modelAutoPatrolling.imagePath, arg0.imgPatrolling, Func.getDisplayOption());
         }
         // arg0.imgStatus.setImageResource(R.drawable.a_withtext);
         if (activity.isFromNoti) {
             if (activity.objId.equalsIgnoreCase(modelAutoPatrolling.objectId)) {
                 arg0.imgPatrolling.performClick();
             }
-        }else{
+        } else {
             arg0.imgPatrolling.setOnClickListener(null);
         }
 
@@ -150,11 +150,11 @@ public class AdapterPatrolling extends Adapter<AdapterPatrolling.ItemHolder> {
             currentItem.chkStatus.setChecked(true);
             patrollingTime = currentItem.txtTime.getText().toString();
             String ocrId = data.getStringExtra(Intent.EXTRA_TEXT);
-            uploadToParse(imageFilePath,photo, ocrId, currentObj);
+            uploadToParse(imageFilePath, photo, ocrId, currentObj);
         }
     }
 
-    private void uploadToParse(final String imagePath,Bitmap patrollingPhoto, String ocrId, final ModelAutoPatrolling modelAutoPatrolling) {
+    private void uploadToParse(final String imagePath, Bitmap patrollingPhoto, String ocrId, final ModelAutoPatrolling modelAutoPatrolling) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         patrollingPhoto.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         byte[] b = baos.toByteArray();
@@ -174,30 +174,40 @@ public class AdapterPatrolling extends Adapter<AdapterPatrolling.ItemHolder> {
         ParseObject post = currentUser.getParseObject(Key.User.post);
         ParseObject site = currentUser.getParseObject(Key.User.site);
 
-        attendObject.put(Key.Patrolling.branch, branch);
-        attendObject.put(Key.Patrolling.company, company);
-        attendObject.put(Key.Patrolling.post, post);
-        attendObject.put(Key.Patrolling.site, site);
-        attendObject.put(Key.Patrolling.supervisor, supervisor);
+        if (branch != null) {
+            attendObject.put(Key.Patrolling.branch, branch);
+        }
+        if (company != null) {
+            attendObject.put(Key.Patrolling.company, company);
+        }
+        if (post != null) {
+            attendObject.put(Key.Patrolling.post, post);
+        }
+        if (site != null) {
+            attendObject.put(Key.Patrolling.site, site);
+        }
+        if (supervisor != null) {
+            attendObject.put(Key.Patrolling.supervisor, supervisor);
+        }
         attendObject.put(Key.Patrolling.status, "P");
         attendObject.put(Key.Patrolling.ocrId, ocrId);
         ParseGeoPoint patrollingPoint = new ParseGeoPoint(activity.latitude, activity.longitude);
         attendObject.put(Key.Patrolling.patrollingPoint, patrollingPoint);
-        ParseObject autoPatrolling=ParseObject.create(Key.AutoPatrolling.NAME);
+        ParseObject autoPatrolling = ParseObject.create(Key.AutoPatrolling.NAME);
         autoPatrolling.setObjectId(modelAutoPatrolling.objectId);
-        attendObject.put(Key.Patrolling.autoPatrolling,autoPatrolling);
+        attendObject.put(Key.Patrolling.autoPatrolling, autoPatrolling);
         showProgress();
         attendObject.saveInBackground(new SaveCallback() {
             @Override
             public void done(com.parse.ParseException e) {
                 dismissProgress();
                 if (e == null) {
-                    activity.objId="";
-                    activity.isFromNoti=false;
+                    activity.objId = "";
+                    activity.isFromNoti = false;
                     currentItem.imgPatrolling.setEnabled(false);
                     currentItem.txtTime.setVisibility(View.VISIBLE);
                     modelAutoPatrolling.isComplete = "1";
-                    modelAutoPatrolling.imagePath=imagePath;
+                    modelAutoPatrolling.imagePath = imagePath;
                     TblAutoPatrolling.updatePatrollingComplete(modelAutoPatrolling, modelAutoPatrolling.objectId);
                     Func.showValidDialog(activity, "Patrolling submitted Successfully.");
                 } else {

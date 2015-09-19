@@ -2,6 +2,7 @@ package com.maxpro.iguard.adapter;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +16,10 @@ import android.widget.TextView;
 
 import com.maxpro.iguard.IGuard;
 import com.maxpro.iguard.R;
+import com.maxpro.iguard.activity.ActFullImage;
 import com.maxpro.iguard.utility.Func;
 import com.maxpro.iguard.utility.Key;
+import com.maxpro.iguard.utility.Var;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 
@@ -108,11 +111,19 @@ public class AdapterHistorical extends RecyclerView.Adapter<RecyclerView.ViewHol
         String dateout = parseObject.getString(Key.Visits.dateOut);
         String timein = parseObject.getString(Key.Visits.timeIn);
         String timeout = parseObject.getString(Key.Visits.timeOut);
-        ParseFile file=parseObject.getParseFile(Key.Visits.visitPhoto);
+        final ParseFile file=parseObject.getParseFile(Key.Visits.visitPhoto);
         if(file!=null) {
             IGuard.imageLoader.displayImage(file.getUrl(), imgPhoto, Func.getDisplayOption());
-        }
 
+            imgPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(activity, ActFullImage.class);
+                    intent.putExtra(Var.IntentUrl, file.getUrl());
+                    activity.startActivity(intent);
+                }
+            });
+        }
         String visitor = parseObject.getString(Key.Visits.visitor);
         String purpose = parseObject.getString(Key.Visits.purpose);
         String peopleCount = parseObject.getString(Key.Visits.peopleCount);

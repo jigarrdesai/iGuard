@@ -51,6 +51,7 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
     private Button btnUpdate;
     private ImageView imgPhoto;
     private int currentHour, currentMinute, currentDay, currentMonth, currentYear;
+    private long currentMilli;
     private SimpleDateFormat dateFormatter;
     private Progress progressDialog;
     private String imageFilePath;
@@ -129,6 +130,7 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
         txtTimeOut.setOnClickListener(this);
         btnUpdate.setOnClickListener(this);
         dateFormatter = new SimpleDateFormat(Var.DF_DATE);
+        currentMilli=System.currentTimeMillis();
         Calendar currentCalendar = Calendar.getInstance();
         currentYear = currentCalendar.get(Calendar.YEAR);
         currentMonth = currentCalendar.get(Calendar.MONTH);
@@ -219,10 +221,10 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
             Func.showValidDialog(getActivity(), "Please enter People Count.");
             return false;
         }
-        if (TextUtils.isEmpty(editVehicle.getText().toString().trim())) {
+        /*if (TextUtils.isEmpty(editVehicle.getText().toString().trim())) {
             Func.showValidDialog(getActivity(), "Please enter Vehicle No.");
             return false;
-        }
+        }*/
         if (TextUtils.isEmpty(editDocName.getText().toString().trim())) {
             Func.showValidDialog(getActivity(), "Please enter Document Name.");
             return false;
@@ -231,10 +233,10 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
             Func.showValidDialog(getActivity(), "Please enter Document No.");
             return false;
         }
-        if (TextUtils.isEmpty(objId) && photo == null) {
+        /*if (TextUtils.isEmpty(objId) && photo == null) {
             Func.showValidDialog(getActivity(), "Please capture photo.");
             return false;
-        }
+        }*/
         return true;
     }
 
@@ -250,7 +252,9 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
         ParseObject visitObject;
         if (TextUtils.isEmpty(objId)) {
             visitObject = new ParseObject(Key.Visits.NAME);
-            visitObject.put(Key.Visits.visitPhoto, imageFile);
+            if(imageFile!=null) {
+                visitObject.put(Key.Visits.visitPhoto, imageFile);
+            }
         } else {
             visitObject = ParseObject.createWithoutData(Key.Visits.NAME, objId);
             visitObject.put(Key.Visits.timeOut, txtTimeOut.getText().toString());
@@ -317,6 +321,9 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
                 textView.setText(dateFormatter.format(newDate.getTime()));
             }
         }, currentYear, currentMonth, currentDay);
+        dpd.getDatePicker().setMinDate(currentMilli);
+        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+
         dpd.show();
     }
 

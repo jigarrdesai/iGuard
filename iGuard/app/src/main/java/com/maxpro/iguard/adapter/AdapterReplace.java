@@ -13,11 +13,13 @@ import android.widget.TextView;
 import com.maxpro.iguard.R;
 import com.maxpro.iguard.activity.ActContact;
 import com.maxpro.iguard.activity.ActReplacement;
+import com.maxpro.iguard.utility.Func;
 import com.maxpro.iguard.utility.Key;
 import com.maxpro.iguard.utility.Var;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,7 +57,13 @@ public class AdapterReplace extends RecyclerView.Adapter<RecyclerView.ViewHolder
         itemHolder.txtReason.setText(object.getString(Key.Replacement.reason));
         String dateTime = object.getString(Key.Replacement.replacedDate) + " " + object.getString(Key.Replacement.replacedTime);
         itemHolder.txtDate.setText(dateTime);
-
+        Date replaceDate=new Date(Func.getMillis(Var.DF_DATETIME,dateTime));
+        Date currentDate=new Date();
+        if(replaceDate.before(currentDate)){
+            holder.itemView.setBackgroundColor(activity.getResources().getColor(R.color.gray));
+        }else {
+            holder.itemView.setBackgroundColor(activity.getResources().getColor(R.color.white));
+        }
         itemHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
