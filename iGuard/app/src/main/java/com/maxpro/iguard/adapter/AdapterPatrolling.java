@@ -196,6 +196,23 @@ public class AdapterPatrolling extends Adapter<AdapterPatrolling.ItemHolder> {
         ParseObject autoPatrolling = ParseObject.create(Key.AutoPatrolling.NAME);
         autoPatrolling.setObjectId(modelAutoPatrolling.objectId);
         attendObject.put(Key.Patrolling.autoPatrolling, autoPatrolling);
+
+        ParseGeoPoint postGeoPoint=null;
+        if (post != null) {
+            postGeoPoint=post.getParseGeoPoint(Key.Post.postLocation);
+        }
+        if (patrollingPoint != null && postGeoPoint != null) {
+            double distance = patrollingPoint.distanceInKilometersTo(postGeoPoint);
+            String dist = (distance * 1000) + "";
+            attendObject.put(Key.Patrolling.statusByDistance, dist);
+        }
+
+        String currentDate = Func.getCurrentDate(Var.DF_DATE);
+        long patroTime = Func.getMillis(Var.DF_DATETIME, currentDate + " " + patrollingTime);
+        long currentTime= Func.getMillis(Var.DF_DATETIME, Func.getCurrentDate(Var.DF_DATETIME));
+        long diff=Math.abs(currentTime - patroTime);
+        long minutes=diff/60000;
+        attendObject.put(Key.Patrolling.statusByTime, minutes + "");
         showProgress();
         attendObject.saveInBackground(new SaveCallback() {
             @Override

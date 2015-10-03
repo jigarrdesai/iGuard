@@ -43,6 +43,8 @@ public class Key {
         public static final String supervisor = "supervisor";
         public static final String post = "post";
         public static final String site = "site";
+        public static final String statusByTime="statusByTime";
+        public static final String statusByDistance="statusByDistance";
     }
 
     public static class Alert {
@@ -75,8 +77,21 @@ public class Key {
         public static final String post = "post";
         public static final String patrollingPoint = "patrollingPoint";
         public static final String autoPatrolling = "autoPatrolling";
+        public static final String statusByTime="statusByTime";
+        public static final String statusByDistance="statusByDistance";
     }
-
+    public static class Post {
+        public static final String NAME = "post";
+        public static final String postLocation = "postLocation";
+    }
+    public static class Shift {
+        public static final String NAME = "Shift";
+        public static final String shiftInTime = "shiftInTime";
+    }
+    public static class Company {
+        public static final String NAME = "Company";
+        public static final String contactDetail = "contactDetail";
+    }
     public static class AutoPatrolling {
         public static final String NAME = "autopatrolling";
         public static final String company = "company";

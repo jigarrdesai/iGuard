@@ -226,13 +226,13 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
             return false;
         }*/
         if (TextUtils.isEmpty(editDocName.getText().toString().trim())) {
-            Func.showValidDialog(getActivity(), "Please enter Document Name.");
+            Func.showValidDialog(getActivity(), "Please enter ID.");
             return false;
         }
-        if (TextUtils.isEmpty(editDocNum.getText().toString().trim())) {
+        /*if (TextUtils.isEmpty(editDocNum.getText().toString().trim())) {
             Func.showValidDialog(getActivity(), "Please enter Document No.");
             return false;
-        }
+        }*/
         /*if (TextUtils.isEmpty(objId) && photo == null) {
             Func.showValidDialog(getActivity(), "Please capture photo.");
             return false;

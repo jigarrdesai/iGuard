@@ -27,12 +27,12 @@ import java.util.List;
 
 public class ActContact extends ActDrawer implements View.OnClickListener {
     private RecyclerView recyclerView;
-    private TextView txtManagerName;
-    private Button btnManagerCall;
+    private TextView txtManagerName,txtCompanyName;
+    private Button btnManagerCall,btnCompanyCall;
     private ImageView imgManagerPic;
     private AdapterContact adapterContact;
     private Progress progressDialog;
-    private String managerPhoneNumber;
+    private String managerPhoneNumber,companyPhoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +50,26 @@ public class ActContact extends ActDrawer implements View.OnClickListener {
         btnManagerCall=(Button) findViewById(R.id.contact_btnManagerCall);
         imgManagerPic= (ImageView) findViewById(R.id.contact_imgManager);
         txtManagerName=(TextView) findViewById(R.id.contact_txtManagerName);
+        txtCompanyName=(TextView) findViewById(R.id.contact_txtCompanyName);
+        btnCompanyCall=(Button) findViewById(R.id.contact_btnCompanyCall);
         recyclerView= (RecyclerView) findViewById(R.id.contact_recyclerview);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         btnManagerCall.setOnClickListener(this);
+        btnCompanyCall.setOnClickListener(this);
+        ParseObject company=currentUser.getParseObject(Key.User.company);
+        if (company != null) {
+            companyPhoneNumber=company.getString(Key.Company.contactDetail);
+            txtCompanyName.setText("Company No.-"+companyPhoneNumber);
+        }else{
+            btnCompanyCall.setVisibility(View.GONE);
+            txtCompanyName.setVisibility(View.GONE);
+        }
         ParseObject manager=currentUser.getParseObject(Key.User.supervisor);
-        txtManagerName.setText(manager.getString(Key.User.fullName));
         managerPhoneNumber=manager.getString(Key.User.contact);
+        txtManagerName.setText(manager.getString(Key.User.fullName) + "-" + managerPhoneNumber);
+
         ParseFile img = manager.getParseFile(Key.User.registrationPhoto);
         if (img != null) {
             IGuard.imageLoader.displayImage(img.getUrl(), imgManagerPic, Func.getDisplayOption());
@@ -91,6 +103,11 @@ public class ActContact extends ActDrawer implements View.OnClickListener {
 
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + managerPhoneNumber));
                 startActivity(intent);
+                break;
+            case R.id.contact_btnCompanyCall:
+
+                Intent intent1 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + companyPhoneNumber));
+                startActivity(intent1);
                 break;
         }
     }

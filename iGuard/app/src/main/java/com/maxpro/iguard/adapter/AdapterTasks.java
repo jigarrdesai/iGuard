@@ -154,11 +154,10 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
         supervisor.setObjectId(modelTask.supervisor);
         attendObject.put(Key.TaskReport.supervisor, supervisor);*/
 
-        ParseUser user = new ParseUser();
-        user.setObjectId(modelTask.userPointer);
-        attendObject.put(Key.TaskReport.userPointer, user);
-
         ParseUser currentUser = ParseUser.getCurrentUser();
+        attendObject.put(Key.TaskReport.userPointer, currentUser);
+
+
         attendObject.put(Key.TaskReport.post, currentUser.getParseObject(Key.User.post));
 
         // ParseUser currentUser = ParseUser.getCurrentUser();

@@ -43,7 +43,7 @@
             android:layout_below="@+id/rowvideotraining_txtTitle"
             android:layout_toRightOf="@+id/rowvideotraining_imgThumb"
             android:ellipsize="end"
-            android:maxLines="2"
+
             android:text="vsdl; ,dfs,mkjsdfjk knsnfkl snfalj  snlaj nan lavjan an an nal nalna naajfsa l" />
         <ImageView
             android:id="@+id/rowvideotraining_imgDownload"

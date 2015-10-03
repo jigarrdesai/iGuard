@@ -46,8 +46,9 @@ public class AdapterContact extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         ItemHolder itemHolder= (ItemHolder) holder;
         ParseObject car=carList.get(position);
-        itemHolder.txtCarname.setText(car.getString(Key.Cars.carName));
         final String phoneNumber=car.getString(Key.Cars.contactNumber);
+        itemHolder.txtCarname.setText("Car Name: "+car.getString(Key.Cars.carName)+" - "+phoneNumber);
+
         itemHolder.btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

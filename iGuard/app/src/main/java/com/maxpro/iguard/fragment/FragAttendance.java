@@ -220,8 +220,34 @@ public class FragAttendance extends Fragment implements View.OnClickListener {
 
     private void uploadToParse() {
         if (photo == null) return;
-        progressDialog.show();
+
         ParseUser user = ParseUser.getCurrentUser();
+        ParseObject userPost=user.getParseObject(Key.User.post);
+        ParseObject userShift=user.getParseObject(Key.User.shift);
+        ParseObject userCompany=user.getParseObject(Key.User.company);
+        ParseObject userSite=user.getParseObject(Key.User.site);
+        ParseObject userSupervisor=user.getParseObject(Key.User.supervisor);
+        if(userCompany==null){
+            Func.showValidDialog(getActivity(),"You do not have assigned Company.");
+            return;
+        }
+        if(userShift==null){
+            Func.showValidDialog(getActivity(),"You do not have assigned Shift.");
+            return;
+        }
+        if(userPost==null){
+            Func.showValidDialog(getActivity(),"You do not have assigned Post.");
+            return;
+        }
+        if(userSite==null){
+            Func.showValidDialog(getActivity(),"You do not have assigned Site.");
+            return;
+        }
+        if(userSupervisor==null){
+            Func.showValidDialog(getActivity(),"You do not have assigned Supervisor.");
+            return;
+        }
+        progressDialog.show();
         ParseGeoPoint geoPoint = new ParseGeoPoint(latitude, longitude);
         // bm = BitmapFactory.decodeFile(imageFilePath);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -236,11 +262,24 @@ public class FragAttendance extends Fragment implements View.OnClickListener {
         attendObject.put(Key.Attendance.submitTimePhoto, imageFile);
         attendObject.put(Key.Attendance.usersPointer, user);
         attendObject.put(Key.Attendance.branch, user.getParseObject(Key.User.branch));
-        attendObject.put(Key.Attendance.company, user.getParseObject(Key.User.company));
-        attendObject.put(Key.Attendance.shift, user.getParseObject(Key.User.shift));
-        attendObject.put(Key.Attendance.supervisor, user.getParseObject(Key.User.supervisor));
-        attendObject.put(Key.Attendance.site, user.getParseObject(Key.User.site));
-        attendObject.put(Key.Attendance.post, user.getParseObject(Key.User.post));
+        attendObject.put(Key.Attendance.company, userCompany);
+        attendObject.put(Key.Attendance.shift, userShift);
+        attendObject.put(Key.Attendance.supervisor, userSupervisor);
+        attendObject.put(Key.Attendance.site, userSite);
+        attendObject.put(Key.Attendance.post, userPost);
+        ParseGeoPoint postGeoPoint=userPost.getParseGeoPoint(Key.Post.postLocation);
+        if (geoPoint != null && postGeoPoint != null) {
+            double distance=geoPoint.distanceInKilometersTo(postGeoPoint);
+            String dist=(distance*1000)+"";
+            attendObject.put(Key.Attendance.statusByDistance, dist);
+        }
+        String currentDate = Func.getCurrentDate(Var.DF_DATE);
+        String shiftTime=userShift.getString(Key.Shift.shiftInTime);
+        long shiftInTime = Func.getMillis(Var.DF_DATETIME, currentDate + " " + shiftTime);
+        long currentTime= Func.getMillis(Var.DF_DATETIME, Func.getCurrentDate(Var.DF_DATETIME));
+        long diff=Math.abs(currentTime - shiftInTime);
+        long minutes=diff/60000;
+        attendObject.put(Key.Attendance.statusByTime,minutes+"");
         attendObject.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

@@ -136,7 +136,6 @@
             android:singleLine="true"
             android:gravity="top|left"
             android:hint="@string/visit_documentName"
-            android:inputType="number"
             android:padding="@dimen/margin_8dp"
             android:textSize="@dimen/font_14dp" />
         <EditText

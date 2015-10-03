@@ -24,7 +24,6 @@
             android:id="@+id/rowleave_txtStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
 
             android:text="dfs"
             android:textSize="@dimen/font_15dp"
