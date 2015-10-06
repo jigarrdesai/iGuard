@@ -155,6 +155,10 @@ public class AdapterPatrolling extends Adapter<AdapterPatrolling.ItemHolder> {
     }
 
     private void uploadToParse(final String imagePath, Bitmap patrollingPhoto, String ocrId, final ModelAutoPatrolling modelAutoPatrolling) {
+        if (!Func.isLocationEnable(activity)) {
+            Func.showValidDialog(activity, activity.getString(R.string.msg_location_enable));
+            return;
+        }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         patrollingPhoto.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         byte[] b = baos.toByteArray();

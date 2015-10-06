@@ -78,7 +78,7 @@ public class ActPatrolling extends ActDrawer implements com.google.android.gms.l
 
             objId=bundle.getString(Var.IntentObjId);
             isFromNoti=true;
-            Log.e("newIntent","onNewIntent objid"+objId);
+            Log.e("newIntent", "onNewIntent objid" + objId);
         }
         init();
     }
@@ -138,6 +138,8 @@ public class ActPatrolling extends ActDrawer implements com.google.android.gms.l
         super.onResume();
         if (mGoogleApiClient.isConnected()) {
             startLocationUpdates();
+        }else{
+            mGoogleApiClient.connect();
         }
     }
     private void getAutoPatrollingListFromServer() {
