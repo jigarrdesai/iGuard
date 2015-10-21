@@ -16,6 +16,7 @@ import com.maxpro.iguard.db.TblTask;
 import com.maxpro.iguard.model.ModelTask;
 import com.maxpro.iguard.utility.AppLog;
 import com.maxpro.iguard.utility.Func;
+import com.maxpro.iguard.utility.ImplClick;
 import com.maxpro.iguard.utility.Key;
 import com.maxpro.iguard.utility.Progress;
 import com.maxpro.iguard.utility.Var;
@@ -26,6 +27,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ActLogin extends Activity implements OnClickListener {
@@ -73,9 +76,45 @@ private ActLogin activity;
                 if (e == null) {
                     String userType=parseUser.getString("userType");
                     if(userType.equalsIgnoreCase("user")){
+                        ParseObject userShift=parseUser.getParseObject(Key.User.shift);
+                        try {
+                            userShift.fetchIfNeeded();
+                        } catch (ParseException e1) {
+                            e1.printStackTrace();
+                        }
+                        if(userShift!=null) {
+                            String inTimeMin = userShift.getString(Key.Shift.shiftInTime);
+                            String endTimeMin = userShift.getString(Key.Shift.shiftOutTime);
+                            String currentHour=Func.getCurrentDate(Var.DF_DATE);
+                            long shiftEndMilli=Func.getMillis(Var.DF_DATETIME, currentHour + " " + endTimeMin);
+                            long shiftInMilli=Func.getMillis(Var.DF_DATETIME, currentHour + " " + inTimeMin);
+                            Date shiftEndDate=new Date(shiftEndMilli);
+                            Date shiftInDate=new Date(shiftInMilli);
+                            Date currentDate=new Date();
+                            if (!shiftEndDate.after(shiftInDate)) {
+                                Calendar cal=Calendar.getInstance();
+                                cal.setTime(shiftEndDate);
+                                cal.add(Calendar.DAY_OF_MONTH,1);
+                                shiftEndDate=cal.getTime();
+                            }
+                            if(currentDate.before(shiftInDate)||currentDate.after(shiftEndDate)){
+                                Func.showValidDialog(activity, "You can login within your shift time only.", new ImplClick() {
+                                    @Override
+                                    public void onOkClick(View v) {
+                                        ParseUser.logOut();
+                                    }
 
-                        startActivity(new Intent(activity, ActDashboard.class));
-                        finish();
+                                    @Override
+                                    public void onCancelClick(View v) {
+
+                                    }
+                                });
+                            }else{
+                                startActivity(new Intent(activity, ActDashboard.class));
+                                finish();
+                            }
+                        }
+
                     }else{
                         Func.showValidDialog(ActLogin.this, "Only guard can login.");
                         ParseUser.logOut();

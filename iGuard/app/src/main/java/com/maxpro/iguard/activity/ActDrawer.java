@@ -22,14 +22,26 @@ import android.widget.TextView;
 
 import com.maxpro.iguard.IGuard;
 import com.maxpro.iguard.R;
+import com.maxpro.iguard.db.TblTask;
+import com.maxpro.iguard.model.ModelTask;
 import com.maxpro.iguard.utility.Func;
+import com.maxpro.iguard.utility.ImplClick;
 import com.maxpro.iguard.utility.Key;
+import com.maxpro.iguard.utility.Progress;
+import com.maxpro.iguard.utility.Var;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ActDrawer extends FragmentActivity {
 
@@ -43,7 +55,7 @@ public class ActDrawer extends FragmentActivity {
     public Button btnDone;
     protected ParseUser currentUser;
 
-
+private Progress progressDialog;
     private View selectedView;
 
     @Override
@@ -58,7 +70,7 @@ public class ActDrawer extends FragmentActivity {
 
 
 
-
+        progressDialog=new Progress(this);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         linearDrawer = (LinearLayout) findViewById(R.id.linearDrawer);
         relProfile=(RelativeLayout) findViewById(R.id.drawer_relProfile);
@@ -78,6 +90,11 @@ public class ActDrawer extends FragmentActivity {
         //Your drawer content...
         currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
+            try {
+                currentUser.fetch();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             txtName.setText(currentUser.getString(Key.User.fullName));
             try {
                 String shiftDesc=currentUser.getParseObject(Key.User.shift).fetchIfNeeded().getString("shiftDescription");
@@ -194,7 +211,7 @@ public class ActDrawer extends FragmentActivity {
                     break;
                 case R.id.drawer_txtLogout:
                     toggleMenuSelection(view);
-                    toggleDrawer();
+                    //toggleDrawer();
                     ParseUser.logOut();
                     Func.clearSP(ActDrawer.this);
                     NotificationManager nm= (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -254,6 +271,65 @@ public class ActDrawer extends FragmentActivity {
                 activity.finish();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ParseObject userShift=currentUser.getParseObject(Key.User.shift);
+        if(userShift!=null) {
+            String endTimeMin = userShift.getString(Key.Shift.shiftOutTime);
+            String inTimeMin = userShift.getString(Key.Shift.shiftInTime);
+            String currentHour=Func.getCurrentDate(Var.DF_DATE);
+            long shiftMilli=Func.getMillis(Var.DF_DATETIME, currentHour + " " + endTimeMin);
+            long shiftInMilli=Func.getMillis(Var.DF_DATETIME, currentHour + " " + inTimeMin);
+            Date shiftEndDate=new Date(shiftMilli);
+            Date shiftInDate=new Date(shiftInMilli);
+            Date currentDate=new Date();
+            if (!shiftEndDate.after(shiftInDate)) {
+                Calendar cal=Calendar.getInstance();
+                cal.setTime(shiftEndDate);
+                cal.add(Calendar.DAY_OF_MONTH,1);
+                shiftEndDate=cal.getTime();
+            }
+            if(!(currentDate.after(shiftInDate)&&currentDate.before(shiftEndDate))){
+
+                Func.showValidDialog(ActDrawer.this, "Your shift is over. Please login again.", new ImplClick() {
+                    @Override
+                    public void onOkClick(View v) {
+                        ArrayList<ModelTask> arrModelTask = TblTask.selectTask(currentUser.getObjectId());
+                        if(arrModelTask!=null) {
+                            ArrayList<ParseObject>arrParseObj=new ArrayList<>();
+                            for (ModelTask model: arrModelTask) {
+                                ParseObject parseObject=new ParseObject(Key.Task.NAME);
+                                parseObject.setObjectId(model.objectId);
+                                parseObject.put(Key.Task.isComplete, "");
+                                arrParseObj.add(parseObject);
+                            }
+                            progressDialog.show();
+                            ParseObject.saveAllInBackground(arrParseObj, new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    progressDialog.dismiss();
+                                    if(e==null){
+                                        txtLogout.performClick();
+                                    }else{
+                                        Func.showValidDialog(ActDrawer.this,e.getMessage());
+                                    }
+
+                                }
+                            });
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelClick(View v) {
+
+                    }
+                });
+            }
+        }
     }
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {

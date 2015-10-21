@@ -58,13 +58,13 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
         final ModelTask modelTask = taskList.get(position);
         itemHolder.txtTaskName.setText(modelTask.taskName);
         itemHolder.txtDateTime.setText("Scheduled Time: "+modelTask.taskDateTime);
-        itemHolder.txtPerformedTime.setText("Performed Time: "+modelTask.performedTime);
-        if (modelTask.isComplete.equalsIgnoreCase("0")) {
-            itemHolder.chkStatus.setChecked(false);
-            itemHolder.chkStatus.setEnabled(true);
-        } else {
+        itemHolder.txtPerformedTime.setText("Performed Time: "+Func.convertDateFormat(Var.DF_DATETIME,Var.DF_TIME,modelTask.performedTime));
+        if ("1".equalsIgnoreCase(modelTask.isComplete)) {
             itemHolder.chkStatus.setChecked(true);
             itemHolder.chkStatus.setEnabled(false);
+        } else {
+            itemHolder.chkStatus.setChecked(false);
+            itemHolder.chkStatus.setEnabled(true);
         }
 
         itemHolder.chkStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -128,7 +128,7 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
 */
     private void uploadTaskToParse(final ModelTask modelTask, final CheckBox chkStatus) {
 
-        modelTask.performedTime=Func.getCurrentDate("HH:mm");
+        modelTask.performedTime=Func.getCurrentDate(Var.DF_DATETIME);
         ParseObject attendObject = new ParseObject(Key.TaskReport.NAME);
 
         attendObject.put(Key.TaskReport.taskName, modelTask.taskName);
@@ -137,6 +137,8 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
         attendObject.put(Key.TaskReport.taskDateTime, modelTask.taskDateTime);
         ParseObject taskPointer = ParseObject.create(Key.Task.NAME);
         taskPointer.setObjectId(modelTask.objectId);
+        taskPointer.put(Key.Task.isComplete, "1");
+        taskPointer.put(Key.Task.performedTime,new Date(Func.getMillis(Var.DF_DATETIME,modelTask.performedTime)));
         attendObject.put(Key.TaskReport.tastPointer, taskPointer);
         ParseObject company = ParseObject.create("Company");
         company.setObjectId(modelTask.company);
@@ -154,7 +156,7 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
         supervisor.setObjectId(modelTask.supervisor);
         attendObject.put(Key.TaskReport.supervisor, supervisor);*/
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        final ParseUser currentUser = ParseUser.getCurrentUser();
         attendObject.put(Key.TaskReport.userPointer, currentUser);
 
 
@@ -162,7 +164,10 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
 
         // ParseUser currentUser = ParseUser.getCurrentUser();
         showProgress();
-        attendObject.saveInBackground(new SaveCallback() {
+        ArrayList<ParseObject>arrParseObj=new ArrayList<>();
+        arrParseObj.add(taskPointer);
+        arrParseObj.add(attendObject);
+        ParseObject.saveAllInBackground(arrParseObj, new SaveCallback() {
             @Override
             public void done(com.parse.ParseException e) {
                 dismissProgress();
@@ -172,7 +177,7 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ItemHolder> 
 
                     modelTask.isComplete = "1";
 
-                    TblTask.updateTaskComplete(modelTask, modelTask.objectId);
+                    TblTask.updateTaskComplete(modelTask, modelTask.objectId, currentUser.getObjectId());
                     Func.showValidDialog(activity, "Task submitted Successfully.");
                     notifyDataSetChanged();
                 } else {

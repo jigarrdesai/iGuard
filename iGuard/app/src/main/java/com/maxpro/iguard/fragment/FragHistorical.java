@@ -17,6 +17,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.Date;
 import java.util.List;
@@ -50,6 +51,8 @@ public class FragHistorical extends Fragment {
         midnight.setHours(0);
         midnight.setMinutes(0);
         midnight.setSeconds(0);
+        ParseObject userPost= ParseUser.getCurrentUser().getParseObject(Key.User.post);
+        parseQuery.whereEqualTo(Key.Visits.post, userPost);
         parseQuery.whereGreaterThan("createdAt", midnight);
         parseQuery.whereExists(Key.Visits.dateOut);
         parseQuery.findInBackground(new FindCallback<ParseObject>() {

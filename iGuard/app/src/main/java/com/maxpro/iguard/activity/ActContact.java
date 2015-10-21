@@ -29,7 +29,7 @@ public class ActContact extends ActDrawer implements View.OnClickListener {
     private RecyclerView recyclerView;
     private TextView txtManagerName,txtCompanyName;
     private Button btnManagerCall,btnCompanyCall;
-    private ImageView imgManagerPic;
+    private ImageView imgManagerPic,imgCompany;
     private AdapterContact adapterContact;
     private Progress progressDialog;
     private String managerPhoneNumber,companyPhoneNumber;
@@ -49,6 +49,7 @@ public class ActContact extends ActDrawer implements View.OnClickListener {
         progressDialog=new Progress(this);
         btnManagerCall=(Button) findViewById(R.id.contact_btnManagerCall);
         imgManagerPic= (ImageView) findViewById(R.id.contact_imgManager);
+        imgCompany=(ImageView) findViewById(R.id.contact_imgCompany);
         txtManagerName=(TextView) findViewById(R.id.contact_txtManagerName);
         txtCompanyName=(TextView) findViewById(R.id.contact_txtCompanyName);
         btnCompanyCall=(Button) findViewById(R.id.contact_btnCompanyCall);
@@ -62,9 +63,14 @@ public class ActContact extends ActDrawer implements View.OnClickListener {
         if (company != null) {
             companyPhoneNumber=company.getString(Key.Company.contactDetail);
             txtCompanyName.setText("Company No.-"+companyPhoneNumber);
+            ParseFile img = company.getParseFile(Key.Company.compLogo);
+            if (img != null) {
+                IGuard.imageLoader.displayImage(img.getUrl(), imgCompany, Func.getDisplayOption());
+            }
         }else{
             btnCompanyCall.setVisibility(View.GONE);
             txtCompanyName.setVisibility(View.GONE);
+            imgCompany.setVisibility(View.GONE);
         }
         ParseObject manager=currentUser.getParseObject(Key.User.supervisor);
         managerPhoneNumber=manager.getString(Key.User.contact);

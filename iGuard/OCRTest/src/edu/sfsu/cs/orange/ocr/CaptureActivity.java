@@ -563,6 +563,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     return super.onKeyDown(keyCode, event);
   }
 
+  public void swap(View view) {
+    cameraManager.swapCamera(surfaceHolder);
+  }
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     //    MenuInflater inflater = getMenuInflater();

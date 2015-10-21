@@ -45,6 +45,8 @@ public class Key {
         public static final String site = "site";
         public static final String statusByTime="statusByTime";
         public static final String statusByDistance="statusByDistance";
+        public static final String ocrId = "ocrId";
+        public static final String tagPhoto = "tagPhoto";
     }
 
     public static class Alert {
@@ -83,14 +85,17 @@ public class Key {
     public static class Post {
         public static final String NAME = "post";
         public static final String postLocation = "postLocation";
+        public static final String postTag= "postTag";
     }
     public static class Shift {
         public static final String NAME = "Shift";
         public static final String shiftInTime = "shiftInTime";
+        public static final String shiftOutTime = "shiftOutTime";
     }
     public static class Company {
         public static final String NAME = "Company";
         public static final String contactDetail = "contactDetail";
+        public static final String compLogo="compLogo";
     }
     public static class AutoPatrolling {
         public static final String NAME = "autopatrolling";
@@ -120,6 +125,8 @@ public class Key {
         public static final String status = "status";
         public static final String shift = "shift";
         public static final String deleted = "deleted";
+        public static final String performedTime="performedTime";
+        public static final String isComplete="isComplete";
     }
 
     public static class TaskReport {

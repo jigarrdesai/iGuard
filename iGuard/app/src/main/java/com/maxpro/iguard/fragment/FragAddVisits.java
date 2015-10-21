@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.maxpro.iguard.IGuard;
 import com.maxpro.iguard.R;
+import com.maxpro.iguard.activity.ActFullImage;
 import com.maxpro.iguard.utility.Func;
 import com.maxpro.iguard.utility.Key;
 import com.maxpro.iguard.utility.Progress;
@@ -72,6 +73,7 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
             String timeout = bundle.getString(Key.Visits.timeOut);
             String visitphoto = bundle.getString(Key.Visits.visitPhoto);
             if (visitphoto != null) {
+                imageFilePath=visitphoto;
                 IGuard.imageLoader.displayImage(visitphoto, imgPhoto, Func.getDisplayOption());
             }
             String visitor = bundle.getString(Key.Visits.visitor);
@@ -137,7 +139,16 @@ public class FragAddVisits extends Fragment implements View.OnClickListener {
         currentDay = currentCalendar.get(Calendar.DAY_OF_MONTH);
         currentHour = currentCalendar.get(Calendar.HOUR_OF_DAY);
         currentMinute = currentCalendar.get(Calendar.MINUTE);
+imgPhoto.setOnLongClickListener(new View.OnLongClickListener() {
+    @Override
+    public boolean onLongClick(View view) {
 
+        Intent intent = new Intent(getActivity(), ActFullImage.class);
+        intent.putExtra(Var.IntentUrl, imageFilePath);
+        startActivity(intent);
+        return true;
+    }
+});
 
     }
 

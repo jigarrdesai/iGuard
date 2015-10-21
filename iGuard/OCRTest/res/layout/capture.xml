@@ -197,7 +197,21 @@
             android:gravity="center_vertical"
             android:scaleType="center"
             android:visibility="gone" />
-
+        <edu.sfsu.cs.orange.ocr.camera.ShutterButton
+            android:id="@+id/btnSwapcamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/shutter_button"
+            android:layout_marginRight="8dip"
+            android:layout_marginTop="8dip"
+            android:background="@drawable/swapcamera"
+            android:clickable="true"
+            android:onClick="swap"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:scaleType="center"
+             />
         <TextView
             android:id="@+id/status_view_bottom"
             android:layout_width="wrap_content"
@@ -231,7 +245,6 @@
         android:id="@+id/done_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="8dip"
         android:layout_marginLeft="8dip"
         android:background="@drawable/background"
@@ -240,6 +253,5 @@
         android:gravity="center"
         android:text="Done"
         android:textColor="@android:color/white"
-
         android:visibility="invisible" />
 </FrameLayout>

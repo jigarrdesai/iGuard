@@ -54,13 +54,20 @@ public class ActTask extends ActDrawer {
         recyclerView.setLayoutManager(layoutManager);
         lastTaskFetch = (String) Func.getSpString(this, Var.Last_FetchDateTask, "01-01-1991");
         String today = Func.getCurrentDate(Var.DF_DATE);
-        if (isFetch(today, lastTaskFetch)) {
-            TblTask.deleteAllTask();
+        if (!TblTask.isExist(Func.getCurrentDate(Var.DF_DATE),currentUser.getObjectId())) {
+            TblTask.deleteAllTask(currentUser.getObjectId());
             getTaskListFromServer();
             Func.setSpString(this,Var.Last_FetchDateTask,today);
         }else{
             getTaskListFromDb();
         }
+        /*if (isFetch(today, lastTaskFetch)) {
+            TblTask.deleteAllTask();
+            getTaskListFromServer();
+            Func.setSpString(this,Var.Last_FetchDateTask,today);
+        }else{
+            getTaskListFromDb();
+        }*/
 
     }
 
@@ -111,9 +118,16 @@ public class ActTask extends ActDrawer {
                         modelTask.company=obj.getParseObject(Key.Task.company).getObjectId();
                         modelTask.site =obj.getParseObject(Key.Task.site).getObjectId();
                         modelTask.branch=obj.getParseObject(Key.Task.branch).getObjectId();
-                        //modelTask.userPointer=obj.getParseObject(Key.Task.userPointer).getObjectId();
+                        modelTask.userPointer=currentUser.getObjectId();
+                        modelTask.createdAt=Func.getCurrentDate(Var.DF_DATE);
                         //modelTask.supervisor=obj.getParseObject(Key.Task.supervisor).getObjectId();
-                        modelTask.isComplete="0";
+                        if(Func.getCurrentDate(Var.DF_DATE).equalsIgnoreCase(Func.getStringFromDate(Var.DF_DATE,obj.getDate(Key.Task.performedTime))))
+                        {
+                            modelTask.isComplete=obj.getString(Key.Task.isComplete);
+                            modelTask.performedTime=Func.getStringFromDate(Var.DF_DATETIME, obj.getDate(Key.Task.performedTime));
+                        }
+
+
                         TblTask.insertTask(modelTask);
                     }
 
@@ -127,7 +141,7 @@ public class ActTask extends ActDrawer {
     private void getTaskListFromDb() {
 
         progressDialog.show();
-        ArrayList<ModelTask> arrModelTask = TblTask.selectTask();
+        ArrayList<ModelTask> arrModelTask = TblTask.selectTask(currentUser.getObjectId());
 
         progressDialog.dismiss();
 

@@ -37,6 +37,9 @@ private String imgUrl;
             Toast.makeText(this,"Image not available.",Toast.LENGTH_SHORT).show();
             finish();
         }
+        if(!imgUrl.startsWith("http")){
+            imgUrl="file:///"+imgUrl;
+        }
         imageView = (ImageView) findViewById(R.id.fullimage_imageView);
         progressDialog.show();
         IGuard.imageLoader.displayImage(imgUrl, imageView, Func.getDisplayOption(),new ImageLoadingListener() {

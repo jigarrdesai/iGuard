@@ -24,9 +24,10 @@ public class Var {
 
     public static final String DF_DATE="dd-MM-yyyy";
     public static final String DF_DATETIME="dd-MM-yyyy HH:mm:ss";
-    public static final String DF_TIME="hh:mm:ss";
+    public static final String DF_TIME="HH:mm:ss";
     public static final String Last_FetchDateTask="Last_FetchDateTask";
     public static final String Last_FetchDatePatrolling="Last_FetchDatePatrolling";
+    public static final String Last_User="Last_User";
     /*intent extra*/
     public static final String IntentObjId="IntentObjId";
     public static final String IntentHeader="IntentHeader";

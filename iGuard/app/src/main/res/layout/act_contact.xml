@@ -24,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/contact_imgManager"
             android:layout_toLeftOf="@+id/contact_btnManagerCall"
+            android:layout_toRightOf="@+id/contact_imgManager"
             android:padding="@dimen/margin_5dp"
             android:textColor="@color/black"
             android:textSize="@dimen/font_15dp" />
@@ -35,14 +35,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@color/blue"
             android:layout_centerVertical="true"
-            android:padding="@dimen/margin_5dp"
             android:layout_marginRight="@dimen/margin_10dp"
+            android:background="@color/blue"
+            android:padding="@dimen/margin_5dp"
             android:text="Call"
             android:textColor="@color/white"
             android:textSize="@dimen/font_15dp" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/contact_relCompany"
         android:layout_width="match_parent"
@@ -50,13 +51,19 @@
         android:layout_below="@+id/contact_relManager"
         android:layout_marginTop="@dimen/margin_5dp">
 
+        <ImageView
+            android:id="@+id/contact_imgCompany"
+            android:layout_width="@dimen/margin_60dp"
+            android:layout_height="@dimen/margin_60dp"
+            android:src="@drawable/contacts" />
+
         <TextView
             android:id="@+id/contact_txtCompanyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-
             android:layout_toLeftOf="@+id/contact_btnCompanyCall"
+            android:layout_toRightOf="@+id/contact_imgCompany"
             android:padding="@dimen/margin_5dp"
             android:textColor="@color/black"
             android:textSize="@dimen/font_15dp" />
@@ -66,14 +73,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@color/blue"
             android:layout_centerVertical="true"
-            android:padding="@dimen/margin_5dp"
             android:layout_marginRight="@dimen/margin_10dp"
+            android:background="@color/blue"
+            android:padding="@dimen/margin_5dp"
             android:text="Call"
             android:textColor="@color/white"
             android:textSize="@dimen/font_15dp" />
     </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contact_recyclerview"
         android:layout_width="match_parent"

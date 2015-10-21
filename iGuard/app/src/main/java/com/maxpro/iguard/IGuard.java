@@ -13,6 +13,7 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Ketan on 3/22/2015.
@@ -35,6 +36,12 @@ public class IGuard extends Application {
         createFolder();
         dbHelper=new DbHelper(this, "iguarddb.sqlite");
         database=dbHelper.openDataBase();
+        /*try {
+            Func.copyDataBase(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
     }
 
     private void createFolder() {

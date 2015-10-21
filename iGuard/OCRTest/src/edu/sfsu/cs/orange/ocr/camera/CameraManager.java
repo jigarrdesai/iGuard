@@ -41,12 +41,12 @@ import java.io.IOException;
 public final class CameraManager {
 
   private static final String TAG = CameraManager.class.getSimpleName();
-  
+
   private static final int MIN_FRAME_WIDTH = 50; // originally 240
   private static final int MIN_FRAME_HEIGHT = 20; // originally 240
   private static final int MAX_FRAME_WIDTH = 800; // originally 480
   private static final int MAX_FRAME_HEIGHT = 600; // originally 360
-  
+
   private final Context context;
   private final CameraConfigurationManager configManager;
   private Camera camera;
@@ -58,6 +58,7 @@ public final class CameraManager {
   private boolean reverseImage;
   private int requestedFramingRectWidth;
   private int requestedFramingRectHeight;
+  int cameraId=1;
   /**
    * Preview frames are delivered here, which we pass on to the registered handler. Make sure to
    * clear the handler so it will only receive one message.
@@ -79,10 +80,11 @@ public final class CameraManager {
   public synchronized void openDriver(SurfaceHolder holder) throws IOException {
     Camera theCamera = camera;
     if (theCamera == null) {
-      theCamera = Camera.open();
-      if (theCamera == null) {
-        throw new IOException();
+      cameraId = findFrontFacingCamera();
+      if (cameraId < 0) {
+        cameraId=0;
       }
+      theCamera = Camera.open(cameraId);
       camera = theCamera;
     }
     camera.setPreviewDisplay(holder);
@@ -96,7 +98,7 @@ public final class CameraManager {
       }
     }
     configManager.setDesiredCameraParameters(theCamera);
-    
+
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
     reverseImage = prefs.getBoolean(PreferencesActivity.KEY_REVERSE_IMAGE, false);
   }
@@ -158,7 +160,7 @@ public final class CameraManager {
       theCamera.setOneShotPreviewCallback(previewCallback);
     }
   }
-  
+
   /**
    * Asks the camera hardware to perform an autofocus.
    * @param delay Time delay to send with the request
@@ -166,7 +168,7 @@ public final class CameraManager {
   public synchronized void requestAutoFocus(long delay) {
   	autoFocusManager.start(delay);
   }
-  
+
   /**
    * Calculates the framing rect which the UI should draw to show the user where to place the
    * barcode. This target helps with alignment as well as forces the user to hold the device
@@ -227,7 +229,7 @@ public final class CameraManager {
 
   /**
    * Changes the size of the framing rect.
-   * 
+   *
    * @param deltaWidth Number of pixels to adjust the width
    * @param deltaHeight Number of pixels to adjust the height
    */
@@ -274,4 +276,45 @@ public final class CameraManager {
                                         rect.width(), rect.height(), reverseImage);
   }
 
+  private int findFrontFacingCamera() {
+    int cameraId = -1;
+    // Search for the front facing camera
+    int numberOfCameras = Camera.getNumberOfCameras();
+    for (int i = 0; i < numberOfCameras; i++) {
+      Camera.CameraInfo info = new Camera.CameraInfo();
+      Camera.getCameraInfo(i, info);
+      if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
+        Log.d("Camera found", "Camera found "+i);
+        cameraId = i;
+        break;
+      }
+    }
+    return cameraId;
+  }
+  public void swapCamera(SurfaceHolder previewHolder){
+    Log.e("swapcamera","SwapCamera");
+    if (previewing) {
+      stopPreview();
+    }
+    //NB: if you don't release the current camera before switching, you app will crash
+    camera.release();
+
+    //swap the id of the camera to be used
+    if(cameraId == Camera.CameraInfo.CAMERA_FACING_BACK){
+      cameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+    }
+    else {
+      cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
+    }
+    camera = Camera.open(cameraId);
+    //Code snippet for this method from somewhere on android developers, i forget where
+    //setCameraDisplayOrientation(CameraActivity.this, currentCameraId, camera);
+    try {
+      //this step is critical or preview on new camera will no know where to render to
+      camera.setPreviewDisplay(previewHolder);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    startPreview();
+  }
 }

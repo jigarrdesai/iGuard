@@ -15,7 +15,7 @@
         android:id="@+id/fragattend_linearBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/fragattend_txtValidation"
         android:layout_marginTop="@dimen/margin_10dp">
 
         <LinearLayout
@@ -88,4 +88,17 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragattend_txtValidation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_8dp"
+        android:text="Site Validation"
+        android:gravity="center"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_15dp"
+        android:layout_marginTop="@dimen/margin_5dp"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

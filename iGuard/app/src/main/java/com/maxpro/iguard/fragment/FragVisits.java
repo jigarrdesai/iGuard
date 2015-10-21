@@ -16,9 +16,11 @@ import com.maxpro.iguard.utility.Func;
 import com.maxpro.iguard.utility.Key;
 import com.maxpro.iguard.utility.Progress;
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,7 +58,8 @@ public class FragVisits extends Fragment {
         elevenfiftynine.setHours(23);
         elevenfiftynine.setMinutes(59);
         elevenfiftynine.setSeconds(59);
-
+        ParseObject userPost= ParseUser.getCurrentUser().getParseObject(Key.User.post);
+        parseQuery.whereEqualTo(Key.Visits.post,userPost);
         parseQuery.whereGreaterThan("createdAt", midnight);
         parseQuery.whereLessThan("createdAt", elevenfiftynine);
         parseQuery.whereDoesNotExist(Key.Visits.dateOut);
