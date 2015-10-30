@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.maxpro.iguard.IGuard;
 import com.maxpro.iguard.R;
 import com.maxpro.iguard.activity.ActAttendance;
+import com.maxpro.iguard.activity.CameraTestActivity;
 import com.maxpro.iguard.utility.AppLog;
 import com.maxpro.iguard.utility.Func;
 import com.maxpro.iguard.utility.Key;
@@ -248,7 +249,7 @@ public class FragAttendance extends Fragment implements View.OnClickListener {
     }
 
     private void selectImage() {
-        Intent intent = new Intent(getActivity(), CaptureActivity.class);
+        Intent intent = new Intent(getActivity(), CameraTestActivity.class);
         imageTagPath=Func.getFilePath();
         intent.putExtra(MediaStore.EXTRA_OUTPUT,imageTagPath);
         startActivityForResult(intent, 100);
@@ -268,8 +269,8 @@ public class FragAttendance extends Fragment implements View.OnClickListener {
                     ocrId = data.getStringExtra(Intent.EXTRA_TEXT);
                     txtValidation.setText(ocrId);
 
-                     tagPhoto = BitmapFactory.decodeFile(imageTagPath);
-                    tagPhoto = Bitmap.createScaledBitmap(tagPhoto, 200, 200, false);
+                    // tagPhoto = BitmapFactory.decodeFile(imageTagPath);
+                    //tagPhoto = Bitmap.createScaledBitmap(tagPhoto, 200, 200, false);
                     break;
                 case 200:
                     //photo = (Bitmap) data.getExtras().get("data");
